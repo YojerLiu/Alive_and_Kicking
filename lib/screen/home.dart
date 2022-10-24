@@ -1,6 +1,7 @@
 import 'package:alive_and_kicking/models/alive_and_kicking_pages.dart';
 import 'package:alive_and_kicking/models/app_state_manager.dart';
 import 'package:alive_and_kicking/models/profile_manager.dart';
+import 'package:alive_and_kicking/screen/diary_screen.dart';
 import 'package:alive_and_kicking/screen/explore_screen.dart';
 import 'package:alive_and_kicking/screen/grocery_screen.dart';
 import 'package:alive_and_kicking/screen/recipe_screen.dart';
@@ -30,6 +31,7 @@ class _HomeState extends State<Home> {
     const ExploreScreen(),
     RecipeScreen(),
     const GroceryScreen(),
+    const DiaryScreen(),
   ];
 
   @override
@@ -61,6 +63,7 @@ class _HomeState extends State<Home> {
           ),
           bottomNavigationBar: BottomNavigationBar(
             selectedItemColor: Theme.of(context).textSelectionTheme.selectionColor,
+            unselectedItemColor: Colors.grey,
             currentIndex: widget.currentTab,
             // Calls manager.goToTab() when the user taps a different tab, to
             // notify other widgets that the index changed.
@@ -71,12 +74,16 @@ class _HomeState extends State<Home> {
                 label: 'Explore',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.book),
+                icon: Icon(Icons.description),
                 label: 'Recipes',
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.list),
                 label: 'To Buy',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.book),
+                label: 'Diary',
               ),
             ],
           ),

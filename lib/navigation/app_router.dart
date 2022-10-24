@@ -145,6 +145,11 @@ class AppRouter extends RouterDelegate<AppLink>
   @override
   GlobalKey<NavigatorState>? get navigatorKey => myNavigatorKey;
 
+  /// Convert a URL to an app state. The user enters a new URL in the web
+  /// browser's address bar. `RouteInformationParser` parses the new route into
+  /// your navigation state (configuration), an instance of `AppLink`. Based on
+  /// the navigation state, `RouterDelegate` updates the app state to reflect
+  /// the new changes.
   @override
   Future<void> setNewRoutePath(AppLink configuration) async {
     switch (configuration.location) {
@@ -169,4 +174,29 @@ class AppRouter extends RouterDelegate<AppLink>
         break;
     }
   }
+
+  /// Convert app state to appLink
+  AppLink getCurrentPath() {
+    if (!appStateManager.isLoggedIn) {
+      return AppLink(location: AppLink.kLoginPath);
+    } else if (!appStateManager.isOnboardingComplete) {
+      return AppLink(location: AppLink.kOnboardingPath);
+    } else if (profileManager.didSelectUser) {
+      return AppLink(location: AppLink.kProfilePath);
+    } else if (groceryManager.isCreatingNewItem) {
+      return AppLink(location: AppLink.kItemPath);
+    } else if (groceryManager.selectedGroceryItem != null) {
+      final id = groceryManager.selectedGroceryItem?.id;
+      return AppLink(location: AppLink.kItemPath, itemId: id);
+    } else {
+      return AppLink(
+        location: AppLink.kHomePath,
+        currentTab: appStateManager.getSelectedTab,
+      );
+    }
+  }
+
+  /// checks the app state and returns the right app link configuration.
+  @override
+  AppLink get currentConfiguration => getCurrentPath();
 }

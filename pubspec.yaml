@@ -84,6 +84,7 @@ flutter:
     - assets/profile_pics/
     - assets/sample_data/
     - assets/fooderlich_assets/
+    - assets/fitness_app/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
