@@ -1,6 +1,5 @@
 import 'package:alive_and_kicking/models/grocery_manager.dart';
 import 'package:alive_and_kicking/my_widgets/grocery_tile.dart';
-import 'package:alive_and_kicking/screen/grocery_item_screen.dart';
 import 'package:flutter/material.dart';
 
 class GroceryListScreen extends StatelessWidget {
