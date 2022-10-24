@@ -1,5 +1,6 @@
 import 'package:alive_and_kicking/models/post.dart';
 import 'package:alive_and_kicking/my_widgets/my_circle_image.dart';
+import 'package:alive_and_kicking/screen/activity_screen.dart';
 import 'package:flutter/material.dart';
 
 class FriendPostTile extends StatelessWidget {
@@ -12,9 +13,19 @@ class FriendPostTile extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
-        CircleImage(
-          imageRadius: 20,
-          imageProvider: AssetImage(post.profileImageUrl),
+        GestureDetector(
+          child: CircleImage(
+            imageRadius: 20,
+            imageProvider: AssetImage(post.profileImageUrl),
+          ),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ActivityScreen(),
+              ),
+            );
+          },
         ),
         const SizedBox(width: 16,),
         // Create Expanded, which makes the children fill the rest of the container.
