@@ -9,7 +9,8 @@ import '../models/post.dart';
 
 class PostWidget extends StatefulWidget {
   final Post post;
-  const PostWidget({Key? key, required this.post}) : super(key: key);
+  final String? imagePath;
+  const PostWidget({Key? key, required this.post, this.imagePath}) : super(key: key);
 
   @override
   State<PostWidget> createState() => _PostWidgetState();
@@ -106,6 +107,14 @@ class _PostWidgetState extends State<PostWidget> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 1,),
             child: Text(widget.post.comment),
+          ),
+          const SizedBox(height: 5,),
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 10,
+              right: 10,
+            ),
+            child: Image.asset(widget.imagePath!),
           ),
           const SizedBox(height: 5,),
           /*const SizedBox(

@@ -105,7 +105,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           title: const Text('View slides of Alive & Kicking',),
           onTap: () async {
             if (kIsWeb) {
-              await launchUrlString('https://www.raywenderlich.com/');
+              await launchUrlString('https://docs.google.com/presentation/d/1qBWM4DabIK-qsj-SWmo4XJR9eyN563MKkInuXS5Z2wo/edit#slide=id.g16b42df49dd_1_163');
             } else {
               // Open WebView
               Provider.of<ProfileManager>(context, listen: false)

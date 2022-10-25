@@ -1,4 +1,5 @@
 import 'package:alive_and_kicking/api/mock_service.dart';
+import 'package:alive_and_kicking/mock_data/post_pics.dart';
 import 'package:alive_and_kicking/my_widgets/post_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,6 @@ class ActivityScreen extends StatefulWidget {
 
 class _ActivityScreenState extends State<ActivityScreen> {
   final mockService = MockService();
-
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +37,7 @@ class _ActivityScreenState extends State<ActivityScreen> {
                 itemBuilder: (context, index) {
                   return PostWidget(
                     post: data[index],
+                    imagePath: PostPics.imagePaths[index],
                   );
                 },
               );
